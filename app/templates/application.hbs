@@ -1,0 +1,16 @@
+<h1>Página de inicio</h1>
+{{#if this.session.isAuthenticated}}
+  <span>Ingresó como {{ session.data.authenticated.user.displayName }}</span>
+  <span>{{action "active"}}</span>
+  <button {{action "logout"}}>Cerrar sesión</button>
+  
+  <LinkTo @route="index">
+    Inicio
+  </LinkTo>
+  <LinkTo @route="brand">
+    Marcas
+  </LinkTo>
+  {{outlet}}
+{{else}}
+  <button {{action "login"}}>Iniciar Facebook</button>
+{{/if}}
