@@ -6,7 +6,7 @@ import firebase from 'firebase/app';
 export default class ApplicationController extends Controller {
     @service session;
     @service firebaseApp;
-    
+
     @action
     async login() {
         const auth = await this.get('firebaseApp').auth();
@@ -17,7 +17,7 @@ export default class ApplicationController extends Controller {
     @action
     active() {
         var user_id = this.get('session.data.authenticated.user.id');
-        
+
         return console.log(user_id);
     }
 

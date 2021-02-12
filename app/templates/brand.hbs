@@ -1,12 +1,26 @@
-<h1>Página de marcas</h1>
 <section>
-{{#each model as |brand|}}
-<div>
-  <div>{{brand.name}}</div>
-  <div>{{brand.token}}</div>
-</div>
-{{/each}}
+  <div class="text-center">
+    <h1 class="">Páginas</h1>
+  </div>
+
+  <table class="table text-center">
+  <thead>
+    <tr>
+      <th class="col-6"><span>id</span></th>
+      <th class="col-6"><span>Nombre</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |brand|}}
+    <tr>
+      <td class="col-6" >{{brand.token}}</td>
+      <td class="col-6">{{brand.name}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
 </section>
+<!--
 <h2>New Post</h2>
 <ul class="">
   <li>
@@ -19,4 +33,5 @@
     <button {{action "createBrand"}}>Publish</button>
   </li>
 </ul>
+ -->
 {{outlet}}
