@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" href="#">Social Lab</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -10,86 +11,138 @@
           <LinkTo class="nav-link active" aria-current="page" @route="index"> Dashboard </LinkTo>
         </li>
         <li class="nav-item">
-          <LinkTo class="nav-link active" aria-current="page" @route="brand"> Marcas </LinkTo>
+          <LinkTo class="nav-link active" aria-current="page" @route="brand"> Brands </LinkTo>
         </li>
         <li class="nav-item">
-          <LinkTo class="nav-link active" aria-current="page" @route="report"> Reportes </LinkTo>
+          <LinkTo class="nav-link active" aria-current="page" @route="insights"> Insights </LinkTo>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <li class="nav-item">
+          <LinkTo class="nav-link active" aria-current="page" @route="campaign"> Campaigns </LinkTo>
         </li>
       </ul>
       <form class="d-flex">
         {{#if this.session.isAuthenticated}}
-        <span class="text-light">Bienvenido {{ session.data.authenticated.user.displayName }}</span>
-        <button class="btn btn-outline-light px-4 mx-3" {{action "logout"}}>Salir</button>
-      {{else}}
-        <button {{action "login"}}>Iniciar sesión</button>
-      {{/if}}
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" aria-expanded="false">
+              {{ session.data.authenticated.user.displayName }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><LinkTo class="nav-link active text-dark" aria-current="page" @route="user"> Profile </LinkTo></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" {{action "logout" }}>Log out</a></li>
+            </ul>
+          </li>
+        </ul>
+        {{else}}
+        <button class="btn btn-outline-light px-4 mx-3" {{action "login" }}>Log in</button>
+        {{/if}}
       </form>
     </div>
   </div>
 </nav>
-  {{#if this.session.isAuthenticated}}
-  <section>
-    <div class="container-fluid bg-light p-3">
-      <div class="container bg-white border rounded mt-4">
-        {{outlet}}
-      </div>
+{{#if this.session.isAuthenticated}}
+<section>
+  <div class="container-fluid bg-light p-3">
+    <div class="container bg-white border rounded mt-4">
+      {{outlet}}
     </div>
-  </section>
-  {{/if}}
+  </div>
+</section>
+{{/if}}
 
 
 <script>
-      var me = 3670953112943120;
-      var token = 'EAAFgxRDxkZAoBAJZCWZBwxFF746Yqk01PIfI3x98ZCyQqjddxWSJ0qm8beHlubnMLmDu6RTJBwnd1ZB5MdmPN3NgC95W9VkRayIAAJC4YTmSC621bkFSCyK4xhoZB2RZCwXpIg5ymvRCEUDD9oRnxRdPNETwrCLOOrq0cIki289YbSN2O1XM1iMC8o7Kpm9RwzWAiQXz6TLrnm36gPeW9YgL057CKaQfdrGIbZBP6CdAVAZDZD';
-      var idBussines = 141830073349263;
-      var idPage = 811855325581793;
-      var host = 'https://graph.facebook.com/v9.0/';
-      var pageToken = 'EAAFgxRDxkZAoBAIZAB5pDNpRIrRZCC6cdutZCloXoWUDRMpBf8WaSZC1cS76l1ua4ohpvdE977IDPcj2s8jKzCtGs4wP5ZBZCJ9eFT2liiFowMLkUKnBDBXkAV0J6ZApZB44SffO3qzrwFhWqa8LDqQAVLOGiBBZCVNCdzuRT2SJbZBG4y6rnTZCztAcS7fjvVBFYDGmFI1f7xMYfgZDZD';
+  var me = 3670953112943120;
+  var token = 'EAAFgxRDxkZAoBACqxmsy60wbfakVGZAW9JSPDlVG11oyJdzZCuyZBRrQmLqFqkLpKM3FlbGkDFQYOq3kLNtTkRjfSvMASecXCwJx1ngfOiqPK4nFxdRWfzEcZBAICqUyrNqt3qi9jnLy0ycN5ttxSSH4xUhH7WkwtX0aAbGkfF6ZCmO0ZCl6fg67So2qrXgOxd96MZBEBTgCH6ryXeBTZBv7M1GJWZAqQfLp4AfddwlWYfccj4KFD01bRZCAHX5tZBnRVt4ZD';
+  var idBussines = 141830073349263;
+  var idPage = 811855325581793;
+  var host = 'https://graph.facebook.com/v9.0/';
+  var hostPage = host + idPage + "/insights/";
+  var pageToken = 'EAAFgxRDxkZAoBAI2CgfA0ZCD9PoEG0Gxi1GVdv3h0j5ZAhr2B5trWFb8876WRtLU8Wlmoj59gKLi97C4ksU9zlL8BstHkcuSDNT6eSVVZCPWrIsOMN5o7L1QRtw0bw1WRQJV4HkHphBCxXKB6dzZCHsdt4MHG3NzIuO1GHmTwLy4V979k8Kf47s65JL8ezLHsIwfMCjTL3qYZCEZC1EbSRe3X90kZA6b6h8ZD';
+  var user ;
 
-     $(document).ready(function(){
+  $(document).ready(function () {
         $.ajax({
           type: "GET",
           dataType: "json",
-          url: host+me+"?access_token="+token,
-          success: function(data){
+          url: host + me + "?fields=email,id,name,businesses,picture&access_token=" + token,
+          success: function (data) {
+            user = data;
             console.log(data);
+            console.log(user.id, user.name, user.email, user.businesses.data.[0].name);
           },
-          error: function(){
-            console.log('Error');
+          error: function () {
+            console.log('Error get route usuario');
           }
         });
-          $.ajax({
-          type: "GET",
-          dataType: "json",
-          url: host+me+"?fields=businesses{name}&access_token="+token,
-          success: function(data){
-            console.log(data);
-          },
-          error: function(){
-            console.log('Error error bussines');
-          }
-      });
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: host+idPage+"/insights/page_impressions_unique&access_token="+pageToken,
-            success: function(data){
-              console.log(data);
-            },
-            error: function(){
-              console.log(url);
-            }
-        });
-     });
-  </script>
+  });
+
+
+      console.log(user)
+      $.ajax({
+        type: "POST",
+        url: "https://social-lab-c5b89-default-rtdb.firebaseio.com/users",
+        crossDomain: true,
+        dataType: "json",
+        data: {
+          _id:user.id,
+          name:user.name,
+          birthday:user.birthday,
+          email:user.email,
+
+        }, // Data sent to server, a set of key/value pairs (i.e. form       fields and values)
+        success: function () {
+          alert("success");
+        },
+        error: function () {
+          console.log('Error post route usuario');
+        }
+    })
+
+    console.log(user);
+
+
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: host + me + "?fields=businesses{name}&access_token=" + token,
+      success: function (data) {
+        console.log(data);
+      },
+      error: function () {
+        console.log('Error error bussines');
+      }
+    });
+
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: hostPage + "page_impressions_unique?__activeScenarioIDs=[]&__activeScenarios=[]&transport=cors&access_token=" + pageToken,
+      success: function (data) {
+        console.log(data);
+      },
+      error: function () {
+        console.log(url);
+      }
+    });
+
+
+  });
+
+  /*
+   GET /{ad-account-id}/insights
+   GET /{ad-id}/insights
+   GET /{ad-set-id}/insights
+   GET /{campaign-id}/insights
+  */
+  $(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>

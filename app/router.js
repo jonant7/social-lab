@@ -10,4 +10,7 @@ Router.map(function() {
   this.route('brand');
   this.route('not-found', {path: '/*path'});
   this.route('report');
+  this.route('campaign');
+  this.route('user');
+  this.route('insights');
 });

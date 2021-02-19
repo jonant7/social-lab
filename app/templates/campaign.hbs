@@ -1,0 +1,41 @@
+<h1>Campañas</h1>
+<section>
+
+  <div class="container p-5">
+      {{#each model as |campaign|}}
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <span><strong>Id:</strong></span>
+          <span>{{campaign._id}}</span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <span><strong>Nombre:</strong></span>
+          <span>{{campaign.name}}</span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <span><strong>Objective:</strong></span>
+          <span>{{campaign.objective}}</span>
+        </div>
+      </div>
+      <br>
+      {{/each}}
+  </div>
+</section>
+
+<script>
+   $("#btnReporte").on("click", function() {
+        var select1 = $("#select1 option:selected").val();
+        var select2 = $("#select2 option:selected").val();
+        var select3 = $("#select3 option:selected").val();
+        var date1 = $("#date1").val();
+        var date2 = $("#date2").val();
+        var date3 = $("#date3").val();
+
+    console.log(select1, select2, select3, date1, date2, date3);
+
+
+
+
+    });
+
+</script>

@@ -10,4 +10,5 @@ export default class BrandController extends Controller {
       });
       newBrand.save();
     }
+
 }

@@ -1,0 +1,12 @@
+{
+  "name": "social-lab",
+  "version": "1.11.1",
+  "main": [
+    "jquery-ui.js"
+  ],
+  "ignore": [
+  ],
+  "dependencies": {
+    "jquery": ">=1.6"
+  }
+}

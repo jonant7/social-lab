@@ -1,57 +1,128 @@
-<section>
+<section class="row">
   <div class="text-center">
-    <h1 class="">Dashboard</h1>
+    <h3 class="my-3">Dashboard</h3>
   </div>
+
   <div class="container">
     <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
-                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker4').datetimepicker({
-                    format: 'L'
-                });
-            });
-        </script>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
+        <span><strong>Date 1</strong></span>
+        <select class="form-select col-3"  onchange={{action (mut selectedCampaign) value='target.value' }}>
+          {{#each model.campaign as |campaign|}}
+          <option value={{campaign.id}}>{{campaign.name}}</option>
+          {{/each}}
+          {{log selectedCampaign.firstObject.name}}
+        </select>
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
+        <span><strong>Date 2</strong></span>
+        <select class="form-select col-3" onchange={{action (mut selectedColor) value='target.value' }}>
+          {{#each model.campaign as |campaign|}}
+          <option value={{campaign.id}}>{{campaign.name}}</option>
+
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
+        <span><strong>Date 3</strong></span>
+        <select class="form-select col-3" onchange={{action (mut selectedColor) value='target.value' }}>
+          {{#each model.campaign as |campaign|}}
+          <option value={{campaign.id}}>{{campaign.name}}</option>
+
+          {{/each}}
+        </select>
+      </div>
+
     </div>
-</div>
-<div class="container">
+
     <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
-                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker4').datetimepicker({
-                    format: 'L'
-                });
-            });
-        </script>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
+        <PowerCalendarRange class="calendar-small mx-auto"
+          @center={{foo}}
+          @selected={{range1}}
+          @onCenterChange={{action (mut foo) value="date"}}
+          @onSelect={{action (mut range1) value="date"}}
+          @minDate={{minDate}} @maxDate={{maxDate}}
+          as |calendar|>
+          <calendar.Nav />
+          <calendar.Days />
+        </PowerCalendarRange>
+        {{log range1}}
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
+        <PowerCalendarRange class="calendar-small mx-auto"
+          @center={{foo}}
+          @selected={{range2}}
+          @onCenterChange={{action (mut foo) value="date"}}
+          @onSelect={{action (mut range2) value="date"}} as |calendar|>
+          <calendar.Nav/>
+          <calendar.Days/>
+        </PowerCalendarRange>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
+        <PowerCalendarRange class="calendar-small mx-auto"
+          @center={{foo}}
+          @selected={{range3}}
+          @onCenterChange={{action (mut foo) value="date"}}
+          @onSelect={{action (mut range3) value="date"}} as |calendar|>
+          <calendar.Nav/>
+          <calendar.Days/>
+        </PowerCalendarRange>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 mt-4 text-right">
+        <span class="btn btn-primary mx-4" id="btnReporte" {{action 'getBrand' }}>Generar reporte</span>
+      </div>
     </div>
-</div>
-<div class="container px-1 px-sm-5 mx-auto">
-    <form autocomplete="off">
-        <div class="flex-row d-flex justify-content-center">
-            <div class="col-lg-6 col-11 px-1">
-                <div class="input-group input-daterange"> <input type="text" id="start" class="form-control text-left mr-2"> <label class="ml-3 form-control-placeholder" id="start-p" for="start">Start Date</label> <span class="fa fa-calendar" id="fa-1"></span> <input type="text" id="end" class="form-control text-left ml-2"> <label class="ml-3 form-control-placeholder" id="end-p" for="end">End Date</label> <span class="fa fa-calendar" id="fa-2"></span> </div>
-            </div>
-        </div>
-    </form>
-</div>
+
+  </div>
+
+  <div class="container disabled border rounded my-5" id="info">
+    <div class="row bg-primary text-white">
+      <div class=" ">
+        <h5>Facebook - Date 1</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+        <span><strong>Reach</strong></span>
+        <br>
+        <span></span>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+        <span><strong>Post Engagement</strong></span>
+        <br>
+        <span></span>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+        <span><strong>Impressions</strong></span>
+        <br>
+        <span></span>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+        <span><strong>CTR</strong></span>
+        <br>
+        <span></span>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  $(function () {
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: 'https://https://social-lab-c5b89-default-rtdb.firebaseio.com/campaigns/retrieving-data.json',
+      success: function (data) {
+        console.log(data);
+      },
+      error: function () {
+        console.log('Error error bussines');
+      }
+    });
+  });
+</script>
 {{outlet}}

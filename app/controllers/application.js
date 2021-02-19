@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import firebase from 'firebase/app';
 
+
 export default class ApplicationController extends Controller {
     @service session;
     @service firebaseApp;
@@ -26,4 +27,6 @@ export default class ApplicationController extends Controller {
         this.session.invalidate();
     }
 
+    minDate = new Date(2020, 11, 20)
+    maxDate = new Date(2021, 3, 21)
 }
