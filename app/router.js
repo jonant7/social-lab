@@ -12,5 +12,5 @@ Router.map(function() {
   this.route('report');
   this.route('campaign');
   this.route('user');
-  this.route('insights');
+  this.route('insight');
 });

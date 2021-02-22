@@ -1,0 +1,86 @@
+<div class="container">
+  <!-- FIRST DROP DOWN WITH THE CATEGORIES -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-4">
+      <label for=""><strong>Selecione el tipo de campaña:</strong></label>
+      <select class="form-select col-3" onchange={{action (mut this.query) value='target.value' }}>
+        <option value="" selected disabled>Seleccione tipo de campaña</option>
+        {{#each @objective as |obj|}}
+        <option value={{obj.name}}>{{obj.name}}</option>
+        {{/each}}
+      </select>
+      {{log 'Selected Objective' this.query}}
+      <p>{{this.query}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <!--
+   <select class="form-select col-3"  onchange={{action (mut selectedCampaign1) value='target.value' }}>
+          <option value="" selected disabled>Seleccione una campaña</option>
+          {{#each model.campaign as |campaign|}}
+          <option value={{campaign.id}}>{{campaign.name}}</option>
+          {{/each}}
+        </select>
+   -->
+
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
+      <span><strong>Date 1</strong></span>
+      <select class="form-select col-3" onchange={{action (mut selectedCamp1) value='target.value' }}>
+        <option value="" selected disabled>Seleccione una campaña</option>
+        <Campaign::Filter @campaigns={{@campaign}} @query={{this.query}} as |results|>
+          {{#each results as |property|}}
+          <option value={{property._id}}>{{property.name}}</option>
+          {{/each}}
+        </Campaign::Filter>
+      </select>
+      {{log 'Selected Campaing 1' selectedCamp1}}
+      <Campaign::FilterCalendar @insigths={{@insight}} @queryCalendar={{selectedCamp1}} as |results| >
+        {{#each results as |property|}}
+          <span >{{property._id}}</span>
+          <span >{{property.impressions}}</span>
+          {{/each}}
+        <PowerCalendarRange class="calendar-small mx-auto"
+        @center={{@center}}
+        @selected={{range}}
+        @onCenterChange={{action (mut @center) value="date"}}
+        @onSelect={{action (mut range) value="date"}}
+        @minDate={{@center}}
+        @maxDate={{@maxDate}}
+
+        as |calendar|>
+        <div class={{if calendar.loading 'loading-spiner-overlay'}}>
+          <calendar.Nav/>
+          <calendar.Days/>
+        </div>
+{{log @center '+' range '+' @maxDate}}
+      </PowerCalendarRange>
+      </Campaign::FilterCalendar>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
+      <span><strong>Date 2</strong></span>
+      <select class="form-select col-3" onchange={{action (mut selectedCamp2) value='target.value' }}>
+        <option value="" selected disabled>Seleccione una campaña</option>
+        <Campaign::Filter @campaigns={{@campaign}} @query={{this.query}} as |results|>
+          {{#each results as |property|}}
+          <option value={{property._id}}>{{property.name}}</option>
+          {{/each}}
+        </Campaign::Filter>
+      </select>
+      {{log 'Selected Campaing 2' selectedCamp2}}
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
+      <span><strong>Date 3</strong></span>
+      <select class="form-select col-3" onchange={{action (mut selectedCamp3) value='target.value' }}>
+        <option value="" selected disabled>Seleccione una campaña</option>
+        <Campaign::Filter @campaigns={{@campaign}} @query={{this.query}} as |results|>
+          {{#each results as |property|}}
+          <option value={{property._id}}>{{property.name}}</option>
+          {{/each}}
+        </Campaign::Filter>
+      </select>
+      {{log 'Selected Campaing 3' selectedCamp3}}
+    </div>
+  </div>
+</div>
+{{yield}}

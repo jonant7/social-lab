@@ -1,0 +1,39 @@
+
+{{#each model as |ins|}}
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <span><strong>Id:</strong></span>
+      <span>{{ins.id}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <span><strong>impressions:</strong></span>
+      <span>{{ins.impressions}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <span><strong>spend:</strong></span>
+      <span>{{ins.spend}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <span><strong>reach:</strong></span>
+      <span>{{ins.reach}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <span><strong>cpc:</strong></span>
+      <span>{{ins.cpc}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <span><strong>ctr:</strong></span>
+      <span>{{ins.ctr}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <span><strong>date_start:</strong></span>
+      <span>{{ins.date_start}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <span><strong>date_stop:</strong></span>
+      <span>{{ins.date_stop}}</span>
+    </div>
+  </div>
+      <br>
+{{/each}}
+{{outlet}}

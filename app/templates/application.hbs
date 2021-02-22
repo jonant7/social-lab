@@ -14,7 +14,7 @@
           <LinkTo class="nav-link active" aria-current="page" @route="brand"> Brands </LinkTo>
         </li>
         <li class="nav-item">
-          <LinkTo class="nav-link active" aria-current="page" @route="insights"> Insights </LinkTo>
+          <LinkTo class="nav-link active" aria-current="page" @route="insight"> Insights </LinkTo>
         </li>
         <li class="nav-item">
           <LinkTo class="nav-link active" aria-current="page" @route="campaign"> Campaigns </LinkTo>
@@ -55,6 +55,7 @@
 
 
 <script>
+  /*
   var me = 3670953112943120;
   var token = 'EAAFgxRDxkZAoBACqxmsy60wbfakVGZAW9JSPDlVG11oyJdzZCuyZBRrQmLqFqkLpKM3FlbGkDFQYOq3kLNtTkRjfSvMASecXCwJx1ngfOiqPK4nFxdRWfzEcZBAICqUyrNqt3qi9jnLy0ycN5ttxSSH4xUhH7WkwtX0aAbGkfF6ZCmO0ZCl6fg67So2qrXgOxd96MZBEBTgCH6ryXeBTZBv7M1GJWZAqQfLp4AfddwlWYfccj4KFD01bRZCAHX5tZBnRVt4ZD';
   var idBussines = 141830073349263;
@@ -72,38 +73,13 @@
           success: function (data) {
             user = data;
             console.log(data);
-            console.log(user.id, user.name, user.email, user.businesses.data.[0].name);
+            console.log(user.id, user.name, user.email, user.businesses.data[0].name);
           },
           error: function () {
             console.log('Error get route usuario');
           }
         });
   });
-
-
-      console.log(user)
-      $.ajax({
-        type: "POST",
-        url: "https://social-lab-c5b89-default-rtdb.firebaseio.com/users",
-        crossDomain: true,
-        dataType: "json",
-        data: {
-          _id:user.id,
-          name:user.name,
-          birthday:user.birthday,
-          email:user.email,
-
-        }, // Data sent to server, a set of key/value pairs (i.e. form       fields and values)
-        success: function () {
-          alert("success");
-        },
-        error: function () {
-          console.log('Error post route usuario');
-        }
-    })
-
-    console.log(user);
-
 
     $.ajax({
       type: "GET",
@@ -129,15 +105,11 @@
       }
     });
 
-
-  });
-
-  /*
    GET /{ad-account-id}/insights
    GET /{ad-id}/insights
    GET /{ad-set-id}/insights
    GET /{campaign-id}/insights
-  */
+
   $(function() {
   $('input[name="daterange"]').daterangepicker({
     opens: 'left'
@@ -145,4 +117,5 @@
     console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
   });
 });
+*/
 </script>

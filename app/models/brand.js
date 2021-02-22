@@ -11,6 +11,5 @@ export default class BrandModel extends Model {
     brand.get('id');
     console.log("mARCA "+brand);
   }
-
 }
 

@@ -1,4 +1,5 @@
 @import "ember-power-calendar";
+@import "ember-power-select";
 
 .calendar-small {
   @include ember-power-calendar($cell-size: 30px);
@@ -12,3 +13,4 @@
 .calendar-red {
   @include ember-power-calendar($cell-size: 40px, $primary-color: red);
 }
+

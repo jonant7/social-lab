@@ -15,7 +15,7 @@ export default class UserRoute extends Route {
     async: false,
     success : function(data) {
       console.log(data);
-      resp.push(data.id, data.name, data.email, data.businesses.data.[0].name, data.picture.data.url);
+      resp.push(data.id, data.name, data.email, data.businesses.data[0].name, data.picture.data.url);
     }, error : function(req, err) {
         console.log(err);
     }

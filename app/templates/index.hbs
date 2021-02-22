@@ -2,81 +2,62 @@
   <div class="text-center">
     <h3 class="my-3">Dashboard</h3>
   </div>
+  <!--Inicio componente -->
+  <Campaign
+    @objective={{@model.objective}}
+    @campaign={{@model.campaign}}
+    @insigths={{@model.insight}}
+
+    @center={{@model.insight.firstObject.date_start}}
+    @maxDate={{@model.insight.firstObject.date_stop}}
+  />
+{{log model.insight.firstObject.date_start}}
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
+      <PowerCalendarRange class="calendar-small mx-auto"
+        @center={{@model.insights.firstObject.date_start}}
+        @selected={{range}}
+        @onCenterChange={{action (mut @model.insights.firstObject.date_start) value="date"}}
+        @onSelect={{action (mut range) value="date"}}
+        @minDate={{@model.insights.firstObject.date_start}}
+        @maxDate={{@model.insights.firstObject.date_stop}}
+        as |calendar|>
+        <div class={{if calendar.loading 'loading-spiner-overlay'}}>
+          <calendar.Nav/>
+          <calendar.Days/>
+        </div>
+
+      </PowerCalendarRange>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
+      <PowerCalendarRange class="calendar-small mx-auto"
+        @center={{foo2}}
+        @selected={{range2}}
+        @onCenterChange={{action (mut foo2) value="date"}}
+        @onSelect={{action (mut range2) value="date"}} as |calendar|>
+        <calendar.Nav/>
+        <calendar.Days/>
+      </PowerCalendarRange>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
+      <PowerCalendarRange class="calendar-small mx-auto"
+        @center={{foo3}}
+        @selected={{range3}}
+        @onCenterChange={{action (mut foo3) value="date"}}
+        @onSelect={{action (mut range3) value="date"}} as |calendar|>
+        <calendar.Nav/>
+        <calendar.Days/>
+      </PowerCalendarRange>
+    </div>
+
+  </div>
 
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
-        <span><strong>Date 1</strong></span>
-        <select class="form-select col-3"  onchange={{action (mut selectedCampaign) value='target.value' }}>
-          {{#each model.campaign as |campaign|}}
-          <option value={{campaign.id}}>{{campaign.name}}</option>
-          {{/each}}
-          {{log selectedCampaign.firstObject.name}}
-        </select>
-
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
-        <span><strong>Date 2</strong></span>
-        <select class="form-select col-3" onchange={{action (mut selectedColor) value='target.value' }}>
-          {{#each model.campaign as |campaign|}}
-          <option value={{campaign.id}}>{{campaign.name}}</option>
-
-          {{/each}}
-        </select>
-      </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
-        <span><strong>Date 3</strong></span>
-        <select class="form-select col-3" onchange={{action (mut selectedColor) value='target.value' }}>
-          {{#each model.campaign as |campaign|}}
-          <option value={{campaign.id}}>{{campaign.name}}</option>
-
-          {{/each}}
-        </select>
-      </div>
-
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 mt-4 text-right">
+      <span class="btn btn-primary mx-4" id="btnReporte">Generar reporte</span>
     </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
-        <PowerCalendarRange class="calendar-small mx-auto"
-          @center={{foo}}
-          @selected={{range1}}
-          @onCenterChange={{action (mut foo) value="date"}}
-          @onSelect={{action (mut range1) value="date"}}
-          @minDate={{minDate}} @maxDate={{maxDate}}
-          as |calendar|>
-          <calendar.Nav />
-          <calendar.Days />
-        </PowerCalendarRange>
-        {{log range1}}
-
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
-        <PowerCalendarRange class="calendar-small mx-auto"
-          @center={{foo}}
-          @selected={{range2}}
-          @onCenterChange={{action (mut foo) value="date"}}
-          @onSelect={{action (mut range2) value="date"}} as |calendar|>
-          <calendar.Nav/>
-          <calendar.Days/>
-        </PowerCalendarRange>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
-        <PowerCalendarRange class="calendar-small mx-auto"
-          @center={{foo}}
-          @selected={{range3}}
-          @onCenterChange={{action (mut foo) value="date"}}
-          @onSelect={{action (mut range3) value="date"}} as |calendar|>
-          <calendar.Nav/>
-          <calendar.Days/>
-        </PowerCalendarRange>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 mt-4 text-right">
-        <span class="btn btn-primary mx-4" id="btnReporte" {{action 'getBrand' }}>Generar reporte</span>
-      </div>
-    </div>
-
   </div>
 
   <div class="container disabled border rounded my-5" id="info">
@@ -109,20 +90,4 @@
     </div>
   </div>
 </section>
-
-<script>
-  $(function () {
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      url: 'https://https://social-lab-c5b89-default-rtdb.firebaseio.com/campaigns/retrieving-data.json',
-      success: function (data) {
-        console.log(data);
-      },
-      error: function () {
-        console.log('Error error bussines');
-      }
-    });
-  });
-</script>
 {{outlet}}

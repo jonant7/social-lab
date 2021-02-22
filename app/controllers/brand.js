@@ -11,4 +11,9 @@ export default class BrandController extends Controller {
       newBrand.save();
     }
 
+    @action
+    test() {
+      console.log('funcionó');
+      alert('funcionó');
+    }
 }
