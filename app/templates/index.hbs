@@ -6,12 +6,12 @@
   <Campaign
     @objective={{@model.objective}}
     @campaign={{@model.campaign}}
-    @insigths={{@model.insight}}
+    @insight={{@model.insight}}
 
     @center={{@model.insight.firstObject.date_start}}
     @maxDate={{@model.insight.firstObject.date_stop}}
   />
-{{log model.insight.firstObject.date_start}}
+<!-- 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
       <PowerCalendarRange class="calendar-small mx-auto"
@@ -30,30 +30,8 @@
       </PowerCalendarRange>
 
     </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
-      <PowerCalendarRange class="calendar-small mx-auto"
-        @center={{foo2}}
-        @selected={{range2}}
-        @onCenterChange={{action (mut foo2) value="date"}}
-        @onSelect={{action (mut range2) value="date"}} as |calendar|>
-        <calendar.Nav/>
-        <calendar.Days/>
-      </PowerCalendarRange>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
-      <PowerCalendarRange class="calendar-small mx-auto"
-        @center={{foo3}}
-        @selected={{range3}}
-        @onCenterChange={{action (mut foo3) value="date"}}
-        @onSelect={{action (mut range3) value="date"}} as |calendar|>
-        <calendar.Nav/>
-        <calendar.Days/>
-      </PowerCalendarRange>
-    </div>
-
   </div>
-
+ -->
   <div class="container">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 mt-4 text-right">
       <span class="btn btn-primary mx-4" id="btnReporte">Generar reporte</span>

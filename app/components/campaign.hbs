@@ -9,7 +9,7 @@
         <option value={{obj.name}}>{{obj.name}}</option>
         {{/each}}
       </select>
-      {{log 'Selected Objective' this.query}}
+
       <p>{{this.query}}</p>
     </div>
   </div>
@@ -22,7 +22,7 @@
           {{/each}}
         </select>
    -->
-
+{{log 'camp: ' @campaign 'ins:' @insight}}
     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 px-5 pb-2 text-center">
       <span><strong>Date 1</strong></span>
       <select class="form-select col-3" onchange={{action (mut selectedCamp1) value='target.value' }}>
@@ -52,7 +52,6 @@
           <calendar.Nav/>
           <calendar.Days/>
         </div>
-{{log @center '+' range '+' @maxDate}}
       </PowerCalendarRange>
       </Campaign::FilterCalendar>
     </div>
