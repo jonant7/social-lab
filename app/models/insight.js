@@ -1,6 +1,7 @@
 import Model, { attr }  from '@ember-data/model';
 
 export default class InsightModel extends Model {
+  @attr('string') _id;
   @attr('number') spend;
   @attr('number') cpc;
   @attr('number') ctr;

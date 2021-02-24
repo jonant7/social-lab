@@ -6,7 +6,7 @@ export default class CampaignFilterCalendarComponent extends Component {
 
     if (queryCalendar) {
       console.log('insight: ' + insights + ' queryCalendar: ' + queryCalendar);
-      insights = insights.filter((insight) => insight.id.includes(queryCalendar));
+      insights = insights.filter((insight) => insight._id.includes(queryCalendar));
     }
 
     return insights;
