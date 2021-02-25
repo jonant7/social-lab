@@ -98,30 +98,6 @@
     </Campaign::Results>
   </Campaign::FilterCalendar>
 
+
 </div>
-  <!--
-  <select class="form-select col-3"  onchange={{action (mut selectedCampaign1) value='target.value' }}>
-        <option value="" selected disabled>Seleccione una campaña</option>
-        {{#each model.campaign as |campaign|}}
-        <option value={{campaign.id}}>{{campaign.name}}</option>
-        {{/each}}
-      </select>
-  -->
-
-  <!--
-          <PowerCalendarRange class="calendar-small mx-auto"
-            @center={{property.date_start}}
-            @selected={{range1}}
-            @onCenterChange={{action (mut property.date_start) value="date"}}
-            @onSelect={{action (mut range1) value="date"}}
-            @minRange={{property.date_start}}
-            @maxRange={{property.date_stop}}
-            as |calendar|>
-            <div class={{if calendar.loading 'loading-spiner-overlay'}}>
-              <calendar.Nav/>
-              <calendar.Days/>
-            </div>
-          </PowerCalendarRange>
-        -->
-
 {{yield}}

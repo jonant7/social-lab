@@ -2,60 +2,10 @@
   <div class="text-center">
     <h3 class="my-3">Dashboard</h3>
   </div>
-  <!--Inicio componente -->
   <Campaign
     @objective={{@model.objective}}
     @campaign={{@model.campaign}}
     @insight={{@model.insight}}
-
-    @center={{@model.insight.firstObject.date_start}}
-    @maxDate={{@model.insight.firstObject.date_stop}}
   />
-<!--
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center px-5">
-      <PowerCalendarRange class="calendar-small mx-auto"
-        @center={{@model.insights.firstObject.date_start}}
-        @selected={{range}}
-        @onCenterChange={{action (mut @model.insights.firstObject.date_start) value="date"}}
-        @onSelect={{action (mut range) value="date"}}
-        @minDate={{@model.insights.firstObject.date_start}}
-        @maxDate={{@model.insights.firstObject.date_stop}}
-        as |calendar|>
-        <div class={{if calendar.loading 'loading-spiner-overlay'}}>
-          <calendar.Nav/>
-          <calendar.Days/>
-        </div>
-
-      </PowerCalendarRange>
-
-    </div>
-  </div>
- -->
-
-  <!-- Await
-
-  <Await @promise={{results}} as |await|>
-            <await.Pending>
-              Loading results...
-            </await.Pending>
-
-            <await.Fulfilled as |results|>
-              {{#each results as |result|}}
-                {{result._id}}
-              {{/each}}
-            </await.Fulfilled>
-
-            <await.Rejected>
-              Something went wrong :(
-            </await.Rejected>
-          </Await>
-  -->
-  <div class="container">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 mt-4 text-right">
-      <span class="btn btn-primary mx-4" id="btnReporte">Generar reporte</span>
-    </div>
-  </div>
-
 </section>
 {{outlet}}

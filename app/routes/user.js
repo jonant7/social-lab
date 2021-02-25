@@ -43,9 +43,6 @@ export default class UserRoute extends Route {
 
   return this.store.findAll('user');
   }
-
-
-
 }
 
 

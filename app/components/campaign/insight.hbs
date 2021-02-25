@@ -1,4 +1,4 @@
-{{#if @isAble}}
+
   <div class="container disabled border rounded my-5 mx-4" id="info">
     <div class="row bg-primary text-white">
       <div class=" ">
@@ -6,42 +6,30 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+      <div class="col">
         <span><strong>Reach</strong></span>
         <br>
         <span>{{@reach}}</span>
       </div>
-      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+      <div class="col">
         <span><strong>Impressions</strong></span>
         <br>
         <span>{{@impressions}}</span>
       </div>
-      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+      <div class="col">
         <span><strong>Spend</strong></span>
         <br>
         <span>$ {{@spend}}</span>
       </div>
-      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+      <div class="col">
         <span><strong>CPC</strong></span>
         <br>
         <span>{{@cpc}}</span>
       </div>
-      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+      <div class="col">
         <span><strong>CTR</strong></span>
         <br>
         <span>{{@ctr}}</span>
       </div>
-      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-        <span><strong>Date Start</strong></span>
-        <br>
-        <span>{{@date_start}}</span>
-      </div>
-      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-        <span><strong>Date Stop</strong></span>
-        <br>
-        <span>{{@date_stop}}</span>
-      </div>
     </div>
 </div>
-{{/if}}
-{{yield}}

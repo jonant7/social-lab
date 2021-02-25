@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-12 text-center">
+    <label>
+      <span>Ingrese el valor del CTR</span>
+      <br>
+      <Input @value={{query}} @type="number" />
+
+    </label>
+    <Report::filter @insights={{@insight}} @query={{query}} as |search|>
+      {{log @insight query}}
+      <ul class="">
+        {{#each  search as |src|}}
+          <li>Id: {{src._id}}   CTR: {{src.ctr}}</li>
+        {{/each}}
+      </ul>
+    </Report::filter>
+
+  </div>
+</div>
